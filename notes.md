@@ -91,5 +91,8 @@ create table tempLog (tempId int(11) auto_increment not null, time varchar(40) n
 - force open door
 - clear DB
 
+- uml (flowcharts)
+- report
+
 display table of
     [time of trigger, light value, US value]
