@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+	<head>
+		<title> Arduino Web Server </title>
+
+	<style>
+		table, th, td {
+  			border: 1px solid black;
+			border-collapse: collapse;
+			padding: 10px 50px;
+		}
+	</style>
+	</head>
+	<body>
+		<h1> Arduino Web Server </h1>
+		<h3> <a href="/">Refresh main</a></h3>
+		<!--<h2> Toggle buttons</h2>
+		{% for pin in pins %}
+			<h3> {{pins[pin].name}}</h3>
+			{% if pins[pin].state ==1 %}
+					is currently <strong>on</strong></h2><div class="row"><div class="col-md-2">
+					<a href="/{{pin}}/off" class="btn btn-block btn-lg btn-default" role="button">Turn off</a></div></div> 
+			{% else %}
+					is currently <strong>off</strong></h2><div class="row"><div class="col-md-2">
+					<a href="/{{pin}}/on" class="btn btn-block btn-lg btn-primary" role="button">Turn on</a></div></div> 
+			{% endif %}
+		{% endfor %}
+		
+		<h2>Commands</h2>
+		<h3> LED pin 2: <a href="/action1"> TURN ON</a></h3>
+		<h3> LED pin 2: <a href="/action2"> TURN OFF</a></h3>
+		<h3> LED pin 3: <a href="/action3"> TURN ON</a></h3>
+		<h3> LED pin 3: <a href="/action4"> TURN OFF</a></h3>
+
+		<br />
+					-->
+
+		<h3><a href="/delete">-Clear Table-</a></h3>
+
+		<form action="/" method="POST">
+			<label>Set Light Value</label>
+			<input type="number" name="light">
+			<input type="submit" value="Update">
+		</form>
+
+		<br />
+	
+
+		<table>
+			<tr>
+				<th>Time</th>
+				<th>Light</th>
+				<th>Distance</th>
+			</tr>
+			
+			{% for row in data %}
+			<tr>
+				<td>{{row[1]}}</td>
+				<td>{{row[2]}}</td>
+				<td>{{row[3]}}</td>
+			</tr>
+			{% endfor %}
+			
+		</table>
+			
+		</table>
+		
+	</body>
+</html>
