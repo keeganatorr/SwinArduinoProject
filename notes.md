@@ -72,27 +72,27 @@ SELECT * FROM tempLog;
 
 ## mine
 
-create table tempLog (tempId int(11) auto_increment not null, time varchar(40) not null, temperature varchar(20) not null, temp2 varchar(20) not null, primary key (tempId));
+*create table tempLog (tempId int(11) auto_increment not null, time varchar(40) not null, temperature varchar(20) not null, temp2 varchar(20) not null, primary key (tempId));*
 
+sudo mysql
+CREATE USER 'keegan'@'localhost';
+CREATE USER 'pi'@'localhost';
+CREATE DATABASE door_db;
 
+grant all privileges on door_db.* to ''@'localhost';
+grant all privileges on door_db.* to 'pi'@'localhost';
 
+USE door_db;
 
+create table doorLog (ID int(11) auto_increment not null, time varchar(40) not null, light varchar(20) not null, distance varchar(20) not null, primary key (ID));
 
+SELECT * FROM doorLog;
 
 # todo
 
-- add interrupts
-- add light
-- add US
-- add open LED
-- add close LED
-- edit light trigger
-- edit US trigger
+
 - force open door
-- clear DB
+
 
 - uml (flowcharts)
 - report
-
-display table of
-    [time of trigger, light value, US value]

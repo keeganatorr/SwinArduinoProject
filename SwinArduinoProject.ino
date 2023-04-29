@@ -1,36 +1,136 @@
-//Task 1. Turning LEDs on and off based on keystroke
-void setup() 
+////////////////////////////////////////////
+//
+// SWE30011 - Practical Assignment - Individual
+// Name: Keegan Pan
+// ID: 102145411
+//
+////////////////////////////////////////////
+
+// This demo shows the usage of a Light Sensor and an Ultrasonic sensor
+// to open a door when movement is detected,
+// but only at a certain light level.
+
+// Definitions
+
+// Door LED
+#define DOOR_OPEN_PIN 10
+#define DOOR_CLOSE_PIN 11
+
+
+// Ultrasonic Sensor
+#define TRIG_PIN 7
+#define ECHO_PIN 6
+// Light Sensor
+#define LIGHT_SENSOR_PIN A0
+
+int cutoffDistance = 20;
+int lightLevel = 20;
+int usTrigger = 0;
+int lightTrigger = 0;
+
+void setup()
 {
-  pinMode(13,OUTPUT);
-  pinMode(3,OUTPUT);
-  Serial.begin(9600);
+	pinMode(DOOR_OPEN_PIN, OUTPUT); // Green LED
+	pinMode(DOOR_CLOSE_PIN, OUTPUT); // Red LED
+	Serial.begin(9600);
+	// Setup US Sensor
+	pinMode(ECHO_PIN, INPUT);
+	pinMode(TRIG_PIN, OUTPUT);
+
+	// Setup Light Sensor
+	pinMode(LIGHT_SENSOR_PIN, INPUT);
 }
 
 void loop()
 {
-   //Check if there is serial input data available 
-   if (Serial.available()>0)
-   {
-      //Read serial input
-      int value = Serial.read();
-      if (value == '1')
-      {
-        digitalWrite(13,HIGH);
-      }
-      else if (value == '2')
-      {
-        digitalWrite(13,LOW);
-      }
-       else if (value == '3')
-      {
-        digitalWrite(3,HIGH);
-      }
-       else if (value == '4')
-      {
-        digitalWrite(3,LOW);
-      }
-   }
+	readSerial();
 
-   Serial.println("test");
-   delay(1000);
+	int us = UltrasonicSensorLoop();
+
+	int light = LightSensorLoop();
+
+	if(us > 0 && us < cutoffDistance && light > lightLevel)
+	{
+		String output = String(us)+","+String(light);
+		/*Serial.print(us);
+		Serial.print(",");*/
+		Serial.println(output);
+
+		// Trigger door loop and send data to UI.
+		//Serial.println("Door opening.");
+		digitalWrite(DOOR_OPEN_PIN, HIGH);
+		delay(5000);
+		//Serial.println("Door open.");
+		digitalWrite(DOOR_OPEN_PIN, LOW);
+		delay(1000);
+		//Serial.println("Door closing.");
+		digitalWrite(DOOR_CLOSE_PIN, HIGH);
+		delay(5000);
+		//Serial.println("Door closed.");
+		digitalWrite(DOOR_CLOSE_PIN, LOW);
+		delay(1000);
+	}
+
+	delay(1000);
+}
+int UltrasonicSensorLoop()
+{
+	int duration;
+	int distance;
+	digitalWrite(TRIG_PIN, LOW);
+	delayMicroseconds(2);
+	digitalWrite(TRIG_PIN, HIGH);
+	delayMicroseconds(10);
+	digitalWrite(TRIG_PIN, LOW);
+	duration = pulseIn(ECHO_PIN, HIGH);
+	distance = (duration / 2) / 29.1;
+	if (distance >= 200 || distance <= 0)
+	{
+		distance = -1;
+		// Debug
+		//Serial.print("D=-1");
+		//Serial.print(",");
+	}
+	else
+	{
+		// Debug
+		//Serial.print("D=");
+		//Serial.print(distance);
+		//Serial.print(",");
+	}
+	return distance;
+}
+
+int LightSensorLoop()
+{
+	int readLight = analogRead(LIGHT_SENSOR_PIN);
+	// Debug
+	//Serial.print("L=");
+	//Serial.println(readLight);
+	return readLight;
+}
+
+void readSerial()
+{
+	if (Serial.available() > 0)
+		{
+			// Read serial input
+			String value = Serial.readString();
+			if (value[0] == 'd')
+			{
+				// Change Distance
+				String result = value.substring(1);
+				cutoffDistance = result.toInt();
+				Serial.print("Change distance: ");
+				Serial.println(result);
+			}
+			else if (value[0] == 'l')
+			{
+				// Change Light
+				String result = value.substring(1);
+				lightLevel = result.toInt();
+				Serial.print("Change light: ");
+				Serial.println(result);
+			}
+		}
 }

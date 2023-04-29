@@ -30,8 +30,21 @@ def index():
 @app.route("/", methods=['POST'])
 def index_post():
     # TODO: Read the status of the pins ON/OFF and update dictionary
-    text = request.form['light']
-    print(text)
+    if(request.form.get('light')):
+        result = request.form['light']
+        print("light")
+        print(result)
+        arduino.write(("l"+result).encode())
+
+    if(request.form.get('distance')):
+        result = request.form['distance']
+        print("distance")
+        print(result)
+        arduino.write(("d"+result).encode())
+
+    if(request.form.get('delete')):
+        print("Deleting table.")
+        delete()
 
     #This data wii be sent to index.html (pins dictionary)
     templateData = { 'pins' : pins }
@@ -101,41 +114,41 @@ def action(action):
     # Pass the template data into the template index.html and return it
     return render_template('index.html', **templateData, data=data)
 
-@app.route("/delete")
+
 def delete():
 
     cursor = dbConn.cursor()
-    cursor.execute("DELETE FROM tempLog where tempId > 0")
+    cursor.execute("DELETE FROM doorLog where ID > 0")
     dbConn.commit()
     cursor.close()
 
     cursor = dbConn.cursor()
-    cursor.execute("ALTER TABLE tempLog AUTO_INCREMENT = 1")
+    cursor.execute("ALTER TABLE doorLog AUTO_INCREMENT = 1")
     dbConn.commit()
     cursor.close()
-
-    templateData = { 'pins' : pins }
-
-    data = showData()
-    
-    # Pass the template data into the template index.html and return it
-    return render_template('index.html', **templateData, data=data)
-
 
 def readThread():
     while 1:
         data = arduino.readline().decode('ASCII')
-        if data:
+        if(len(data)>0):
             print(data)
-            cursor = dbConn.cursor()
-            cursor.execute("INSERT INTO tempLog (time, temperature, temp2) values (\'{0}\', \'{1}\', \'{2}\')".format(datetime.datetime.now(), data.strip(), data.strip()))
-            dbConn.commit()
-            cursor.close()
-            time.sleep(2)
+            if "," in data:
+                splitData = data.split(",")
+                print(len(splitData))
+                if(len(splitData) >= 2):
+                    if(len(splitData[0]) > 0 and len(splitData[1]) > 0):
+                        cursor = dbConn.cursor()
+                        cursor.execute("INSERT INTO doorLog (time, light, distance) values (\'{0}\', \'{1}\', \'{2}\')".format(datetime.datetime.now(), splitData[1].strip(), splitData[0].strip()))
+                        dbConn.commit()
+                        cursor.close()
+                        print("Insertion successful")
+                        time.sleep(1)
 
 def showData():
     cur = dbConn.cursor()
-    cur.execute("select * from tempLog")
+    cur.execute("select * from doorLog")
+    dbConn.commit()
+    cur.close()
     return cur.fetchall()
 
 # Main function, set up serial bus, indicate port for the webserver,
@@ -143,7 +156,7 @@ def showData():
 if __name__ == '__main__':
     arduino = serial.Serial('/dev/ttyACM0', 9600, timeout = 1)
     arduino.flush()
-    dbConn = pymysql.connect(host="localhost",user="keegan",password="",database="temperature_db") or die("Cannot connect to database")
+    dbConn = pymysql.connect(host="localhost",user="keegan",password="",database="door_db") or die("Cannot connect to database")
     x = threading.Thread(target=readThread)
     x.start()
     app.run(host='0.0.0.0', port = 80, debug = True)
