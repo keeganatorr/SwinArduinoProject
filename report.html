@@ -1,0 +1,666 @@
+<!DOCTYPE html><html><head>
+      <title>report</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////home/keegan/.vscode-oss/extensions/shd101wyy.markdown-preview-enhanced-0.6.8-universal/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p,html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  300px/2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="report">Report</h1>
+
+<p><strong>Name: Keegan Pan</strong><br>
+<strong>ID: 102145411</strong></p>
+<h2 class="mume-header" id="summary">Summary</h2>
+
+<p>For this assignment, I have created an automated chicken door which will open in the mornings to allow chickens out of thier coop. The idea leading to this came from when my father ordered an automated door from eBay, but it was not configureable and would open too early in the morning, this led the the loss of chickens as there was a fox waiting for them as dawn hit. If this was delayed, we would not have lost the chickens.</p>
+<p>My strategy approaching this was to use a light sensor and ultrasonic sensor to detect the level of light and if there was a chicken waiting to leave to trigger the door opening and closing, the project is powered by and arduino and web server running on an Raspberry Pi, which allows the parameters to be configured, so the sensitivity can be adjusted if the light levels are too low or high, allowing us to trigger the door opening in regards to differenct levels of sunlight.</p>
+<p><!--?xml version="1.0" encoding="us-ascii" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" contentstyletype="text/css" height="227px" preserveAspectRatio="none" style="width:287px;height:227px;background:#FFFFFF;" version="1.1" viewBox="0 0 287 227" width="287px" zoomAndPan="magnify"><defs/><g><rect fill="#F1F1F1" height="36.3441" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="265" x="11" y="11"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="245" x="21" y="33.8281">Arduino: Light Sensor and Ultrasonic Sensor</text><rect fill="#F1F1F1" height="36.3441" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="61" x="113" y="67.3441"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="41" x="123" y="90.1722">Trigger</text><rect fill="#F1F1F1" height="36.3441" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="117" x="85" y="123.6882"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="97" x="95" y="146.5163">Edge Server (RPI)</text><rect fill="#F1F1F1" height="36.3441" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="168" x="59.5" y="180.0323"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="148" x="69.5" y="202.8604">Web Server with Database</text><line style="stroke:#181818;stroke-width:1.0;" x1="143.5" x2="143.5" y1="47.3441" y2="67.3441"/><polygon fill="#181818" points="139.5,57.3441,143.5,67.3441,147.5,57.3441,143.5,61.3441" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="143.5" x2="143.5" y1="103.6882" y2="123.6882"/><polygon fill="#181818" points="139.5,113.6882,143.5,123.6882,147.5,113.6882,143.5,117.6882" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="143.5" x2="143.5" y1="160.0323" y2="180.0323"/><polygon fill="#181818" points="139.5,170.0323,143.5,180.0323,147.5,170.0323,143.5,174.0323" style="stroke:#181818;stroke-width:1.0;"/><!--SRC=[it8iIYdDpCktKl39JCyeKGXEpIlEBr98p4jH2CqfAKeipi_BJ8QAMdDPXHHbfgUdWbYkAUcfGF6YijGY1OsW04zDe5XuQX9Cg3op94F19R4aCIcnEDKQ0000]--></g></svg></p><p>The implementation uses an HC-SR04 ultrasonic sensor and a TEMT6000 light sensor to detect object distance and light levels respectively, when the ultrasonic sensor detects an object close enough and the light sensor detects a light level high enough, a door is triggered to open, and then close a few seconds later. The door in my example is represented by an LED.<br>
+When an event is triggered, the data is sent via serial to the edge server to monitor when it happens, in a database we save the time, level of light and distance from when the trigger happens. Using the edge server we can configure the light level and distance level that will cause the trigger, this allows us to fine tune the triggering of the event.</p>
+<h3 class="mume-header" id="resources">Resources</h3>
+
+<p>To use the HC-SR04 I followed this guide:<br>
+<a href="https://www.instructables.com/Simple-Arduino-and-HC-SR04-Example/">https://www.instructables.com/Simple-Arduino-and-HC-SR04-Example/</a></p>
+<p>For the TEMT6000 light sensor I followed this guide:<br>
+<a href="https://learn.sparkfun.com/tutorials/temt6000-ambient-light-sensor-hookup-guide/all">https://learn.sparkfun.com/tutorials/temt6000-ambient-light-sensor-hookup-guide/all</a></p>
+<p>I also used the examples for the Flask webserver from the class tutorials and made modifications to allow the control of the serial output to the arduino to allow modifying the sensitivity.<br>
+I also found snippets online for MySQL access using python, which I used to allow the webserver to display the information gathered.</p>
+<p><img src="20230429_195500.jpg" alt></p>
+<h3 class="mume-header" id="code">Code</h3>
+
+<h4 class="mume-header" id="arduino-code">Arduino Code</h4>
+
+<pre data-role="codeBlock" data-info="arduino" class="language-arduino"><span class="token comment">////////////////////////////////////////////</span>
+<span class="token comment">//</span>
+<span class="token comment">// SWE30011 - Practical Assignment - Individual</span>
+<span class="token comment">// Name: Keegan Pan</span>
+<span class="token comment">// ID: 102145411</span>
+<span class="token comment">//</span>
+<span class="token comment">////////////////////////////////////////////</span>
+
+<span class="token comment">// This demo shows the usage of a Light Sensor and an Ultrasonic sensor</span>
+<span class="token comment">// to open a door when movement is detected,</span>
+<span class="token comment">// but only at a certain light level.</span>
+
+<span class="token comment">// Definitions</span>
+
+<span class="token comment">// Door LED</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">DOOR_OPEN_PIN</span> <span class="token expression"><span class="token number">10</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">DOOR_CLOSE_PIN</span> <span class="token expression"><span class="token number">11</span></span></span>
+
+
+<span class="token comment">// Ultrasonic Sensor</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">TRIG_PIN</span> <span class="token expression"><span class="token number">7</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ECHO_PIN</span> <span class="token expression"><span class="token number">6</span></span></span>
+<span class="token comment">// Light Sensor</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">LIGHT_SENSOR_PIN</span> <span class="token expression">A0</span></span>
+
+<span class="token keyword keyword-int">int</span> cutoffDistance <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-int">int</span> lightLevel <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-int">int</span> usTrigger <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-int">int</span> lightTrigger <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-void">void</span> <span class="token keyword keyword-setup">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token function">pinMode</span><span class="token punctuation">(</span>DOOR_OPEN_PIN<span class="token punctuation">,</span> <span class="token constant">OUTPUT</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Green LED</span>
+	<span class="token function">pinMode</span><span class="token punctuation">(</span>DOOR_CLOSE_PIN<span class="token punctuation">,</span> <span class="token constant">OUTPUT</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Red LED</span>
+	<span class="token builtin">Serial</span><span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token number">9600</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// Setup US Sensor</span>
+	<span class="token function">pinMode</span><span class="token punctuation">(</span>ECHO_PIN<span class="token punctuation">,</span> <span class="token constant">INPUT</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">pinMode</span><span class="token punctuation">(</span>TRIG_PIN<span class="token punctuation">,</span> <span class="token constant">OUTPUT</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token comment">// Setup Light Sensor</span>
+	<span class="token function">pinMode</span><span class="token punctuation">(</span>LIGHT_SENSOR_PIN<span class="token punctuation">,</span> <span class="token constant">INPUT</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-void">void</span> <span class="token keyword keyword-loop">loop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token function">readSerial</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token keyword keyword-int">int</span> us <span class="token operator">=</span> <span class="token function">UltrasonicSensorLoop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token keyword keyword-int">int</span> light <span class="token operator">=</span> <span class="token function">LightSensorLoop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token keyword keyword-if">if</span><span class="token punctuation">(</span>us <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> us <span class="token operator">&gt;</span> cutoffDistance <span class="token operator">&amp;&amp;</span> light <span class="token operator">&gt;</span> lightLevel<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token keyword keyword-String">String</span> output <span class="token operator">=</span> <span class="token keyword keyword-String">String</span><span class="token punctuation">(</span>us<span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">&quot;,&quot;</span><span class="token operator">+</span><span class="token keyword keyword-String">String</span><span class="token punctuation">(</span>light<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">/*Serial.print(us);
+		Serial.print(&quot;,&quot;);*/</span>
+		<span class="token builtin">Serial</span><span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>output<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		<span class="token comment">// Trigger door loop and send data to UI.</span>
+		<span class="token comment">//Serial.println(&quot;Door opening.&quot;);</span>
+		<span class="token function">digitalWrite</span><span class="token punctuation">(</span>DOOR_OPEN_PIN<span class="token punctuation">,</span> <span class="token constant">HIGH</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">5000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//Serial.println(&quot;Door open.&quot;);</span>
+		<span class="token function">digitalWrite</span><span class="token punctuation">(</span>DOOR_OPEN_PIN<span class="token punctuation">,</span> <span class="token constant">LOW</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//Serial.println(&quot;Door closing.&quot;);</span>
+		<span class="token function">digitalWrite</span><span class="token punctuation">(</span>DOOR_CLOSE_PIN<span class="token punctuation">,</span> <span class="token constant">HIGH</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">5000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//Serial.println(&quot;Door closed.&quot;);</span>
+		<span class="token function">digitalWrite</span><span class="token punctuation">(</span>DOOR_CLOSE_PIN<span class="token punctuation">,</span> <span class="token constant">LOW</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword keyword-int">int</span> <span class="token function">UltrasonicSensorLoop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword keyword-int">int</span> duration<span class="token punctuation">;</span>
+	<span class="token keyword keyword-int">int</span> distance<span class="token punctuation">;</span>
+	<span class="token function">digitalWrite</span><span class="token punctuation">(</span>TRIG_PIN<span class="token punctuation">,</span> <span class="token constant">LOW</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">delayMicroseconds</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">digitalWrite</span><span class="token punctuation">(</span>TRIG_PIN<span class="token punctuation">,</span> <span class="token constant">HIGH</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">delayMicroseconds</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">digitalWrite</span><span class="token punctuation">(</span>TRIG_PIN<span class="token punctuation">,</span> <span class="token constant">LOW</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	duration <span class="token operator">=</span> <span class="token function">pulseIn</span><span class="token punctuation">(</span>ECHO_PIN<span class="token punctuation">,</span> <span class="token constant">HIGH</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	distance <span class="token operator">=</span> <span class="token punctuation">(</span>duration <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">29.1</span><span class="token punctuation">;</span>
+	<span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>distance <span class="token operator">&gt;=</span> <span class="token number">200</span> <span class="token operator">||</span> distance <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		distance <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+		<span class="token comment">// Debug</span>
+		<span class="token comment">//Serial.print(&quot;D=-1&quot;);</span>
+		<span class="token comment">//Serial.print(&quot;,&quot;);</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword keyword-else">else</span>
+	<span class="token punctuation">{</span>
+		<span class="token comment">// Debug</span>
+		<span class="token comment">//Serial.print(&quot;D=&quot;);</span>
+		<span class="token comment">//Serial.print(distance);</span>
+		<span class="token comment">//Serial.print(&quot;,&quot;);</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword keyword-return">return</span> distance<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-int">int</span> <span class="token function">LightSensorLoop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword keyword-int">int</span> readLight <span class="token operator">=</span> <span class="token function">analogRead</span><span class="token punctuation">(</span>LIGHT_SENSOR_PIN<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// Debug</span>
+	<span class="token comment">//Serial.print(&quot;L=&quot;);</span>
+	<span class="token comment">//Serial.println(readLight);</span>
+	<span class="token keyword keyword-return">return</span> readLight<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-void">void</span> <span class="token function">readSerial</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span><span class="token builtin">Serial</span><span class="token punctuation">.</span><span class="token function">available</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+		<span class="token punctuation">{</span>
+			<span class="token comment">// Read serial input</span>
+			<span class="token keyword keyword-String">String</span> value <span class="token operator">=</span> <span class="token builtin">Serial</span><span class="token punctuation">.</span><span class="token function">readString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>value<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">&apos;d&apos;</span><span class="token punctuation">)</span>
+			<span class="token punctuation">{</span>
+				<span class="token comment">// Change Distance</span>
+				<span class="token keyword keyword-String">String</span> result <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				cutoffDistance <span class="token operator">=</span> result<span class="token punctuation">.</span><span class="token function">toInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token builtin">Serial</span><span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Change distance: &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token builtin">Serial</span><span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword keyword-else">else</span> <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>value<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">&apos;l&apos;</span><span class="token punctuation">)</span>
+			<span class="token punctuation">{</span>
+				<span class="token comment">// Change Light</span>
+				<span class="token keyword keyword-String">String</span> result <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				lightLevel <span class="token operator">=</span> result<span class="token punctuation">.</span><span class="token function">toInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token builtin">Serial</span><span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Change light: &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token builtin">Serial</span><span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h4 class="mume-header" id="python-webserver">Python Webserver</h4>
+
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-import">import</span> serial
+<span class="token keyword keyword-import">import</span> pymysql
+<span class="token keyword keyword-import">import</span> time
+<span class="token keyword keyword-import">import</span> threading
+<span class="token keyword keyword-import">import</span> datetime
+<span class="token keyword keyword-from">from</span> flask <span class="token keyword keyword-import">import</span> Flask<span class="token punctuation">,</span> request<span class="token punctuation">,</span> render_template
+
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+
+<span class="token comment"># Dictionary of pins with name of pin and state ON/OFF</span>
+pins <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token number">2</span> <span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">&apos;name&apos;</span> <span class="token punctuation">:</span> <span class="token string">&apos;PIN 2&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;state&apos;</span> <span class="token punctuation">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token number">3</span> <span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">&apos;name&apos;</span> <span class="token punctuation">:</span> <span class="token string">&apos;PIN 3&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;state&apos;</span> <span class="token punctuation">:</span> <span class="token number">0</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    
+<span class="token comment"># Main function when accessing the website</span>
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">&quot;/&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-def">def</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># TODO: Read the status of the pins ON/OFF and update dictionary</span>
+
+    
+    <span class="token comment">#This data wii be sent to index.html (pins dictionary)</span>
+    templateData <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">&apos;pins&apos;</span> <span class="token punctuation">:</span> pins <span class="token punctuation">}</span>
+
+    data <span class="token operator">=</span> showData<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+    <span class="token comment"># Pass the template data into the template index.html and return it</span>
+    <span class="token keyword keyword-return">return</span> render_template<span class="token punctuation">(</span><span class="token string">&apos;index.html&apos;</span><span class="token punctuation">,</span> <span class="token operator">**</span>templateData<span class="token punctuation">,</span> data<span class="token operator">=</span>data<span class="token punctuation">)</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">&quot;/&quot;</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">&apos;POST&apos;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-def">def</span> <span class="token function">index_post</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># TODO: Read the status of the pins ON/OFF and update dictionary</span>
+    <span class="token keyword keyword-if">if</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span>form<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">&apos;light&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        result <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">&apos;light&apos;</span><span class="token punctuation">]</span>
+        <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">&quot;light&quot;</span><span class="token punctuation">)</span>
+        <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+        arduino<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">&quot;l&quot;</span><span class="token operator">+</span>result<span class="token punctuation">)</span><span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword keyword-if">if</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span>form<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">&apos;distance&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        result <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">&apos;distance&apos;</span><span class="token punctuation">]</span>
+        <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">&quot;distance&quot;</span><span class="token punctuation">)</span>
+        <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+        arduino<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">&quot;d&quot;</span><span class="token operator">+</span>result<span class="token punctuation">)</span><span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword keyword-if">if</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span>form<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">&apos;delete&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">&quot;Deleting table.&quot;</span><span class="token punctuation">)</span>
+        delete<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment">#This data wii be sent to index.html (pins dictionary)</span>
+    templateData <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">&apos;pins&apos;</span> <span class="token punctuation">:</span> pins <span class="token punctuation">}</span>
+
+    data <span class="token operator">=</span> showData<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+    <span class="token comment"># Pass the template data into the template index.html and return it</span>
+    <span class="token keyword keyword-return">return</span> render_template<span class="token punctuation">(</span><span class="token string">&apos;index.html&apos;</span><span class="token punctuation">,</span> <span class="token operator">**</span>templateData<span class="token punctuation">,</span> data<span class="token operator">=</span>data<span class="token punctuation">)</span>
+
+<span class="token comment"># Function with buttons that toggle depending on the status</span>
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">&quot;/&lt;changePin&gt;/&lt;toggle&gt;&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-def">def</span> <span class="token function">toggle_function</span><span class="token punctuation">(</span>changePin<span class="token punctuation">,</span> toggle<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># Convert the pin from the URL into an interger:</span>
+    changePin <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>changePin<span class="token punctuation">)</span>
+    <span class="token comment"># Get the device name for the pin being chnaged:</span>
+    deviceName <span class="token operator">=</span> pins<span class="token punctuation">[</span>changePin<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">&apos;name&apos;</span><span class="token punctuation">]</span>
+    <span class="token comment"># If the action part of the URL is &quot;on,&quot; execute the code intended below:</span>
+    <span class="token keyword keyword-if">if</span> toggle <span class="token operator">==</span> <span class="token string">&quot;on&quot;</span><span class="token punctuation">:</span>
+        <span class="token comment">#Set the pin high</span>
+        <span class="token keyword keyword-if">if</span> changePin <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+            arduino<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">b&quot;1&quot;</span><span class="token punctuation">)</span>
+            pins<span class="token punctuation">[</span>changePin<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">&apos;state&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+        <span class="token keyword keyword-if">if</span> changePin <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">:</span>
+            arduino<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">b&quot;3&quot;</span><span class="token punctuation">)</span>
+            pins<span class="token punctuation">[</span>changePin<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">&apos;state&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+        <span class="token comment">#Save the status message to be passed into the template:</span>
+        message <span class="token operator">=</span> <span class="token string">&quot;Turned&quot;</span> <span class="token operator">+</span> deviceName <span class="token operator">+</span> <span class="token string">&quot;on.&quot;</span>
+    <span class="token keyword keyword-if">if</span> toggle <span class="token operator">==</span> <span class="token string">&quot;off&quot;</span><span class="token punctuation">:</span>
+        <span class="token keyword keyword-if">if</span> changePin <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+            arduino<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">b&quot;2&quot;</span><span class="token punctuation">)</span>
+            pins<span class="token punctuation">[</span>changePin<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">&apos;state&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token keyword keyword-if">if</span> changePin <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">:</span>
+            arduino<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">b&quot;4&quot;</span><span class="token punctuation">)</span>
+            pins<span class="token punctuation">[</span>changePin<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">&apos;state&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token comment">#Set the pin low</span>
+        message <span class="token operator">=</span> <span class="token string">&quot;Turned&quot;</span> <span class="token operator">+</span> deviceName <span class="token operator">+</span> <span class="token string">&quot;off.&quot;</span>
+    
+    <span class="token comment">#This data wii be sent to index.html (pins dictionary)</span>
+    templateData <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">&apos;pins&apos;</span> <span class="token punctuation">:</span> pins <span class="token punctuation">}</span>
+
+    data <span class="token operator">=</span> showData<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+    <span class="token comment"># Pass the template data into the template index.html and return it</span>
+    <span class="token keyword keyword-return">return</span> render_template<span class="token punctuation">(</span><span class="token string">&apos;index.html&apos;</span><span class="token punctuation">,</span> <span class="token operator">**</span>templateData<span class="token punctuation">,</span> data<span class="token operator">=</span>data<span class="token punctuation">)</span>
+
+<span class="token comment">#Function to send simple commands</span>
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">&quot;/&lt;action&gt;&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-def">def</span> <span class="token function">action</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-if">if</span> action <span class="token operator">==</span> <span class="token string">&apos;action1&apos;</span><span class="token punctuation">:</span>
+        arduino<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">b&quot;1&quot;</span><span class="token punctuation">)</span>
+        pins<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">&apos;state&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token keyword keyword-if">if</span> action <span class="token operator">==</span> <span class="token string">&apos;action2&apos;</span><span class="token punctuation">:</span>
+        arduino<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">b&quot;2&quot;</span><span class="token punctuation">)</span>
+        pins<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">&apos;state&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword keyword-if">if</span> action <span class="token operator">==</span> <span class="token string">&apos;action3&apos;</span><span class="token punctuation">:</span>
+        arduino<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">b&quot;3&quot;</span><span class="token punctuation">)</span>
+        pins<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">&apos;state&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token keyword keyword-if">if</span> action <span class="token operator">==</span> <span class="token string">&apos;action4&apos;</span><span class="token punctuation">:</span>
+        arduino<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">b&quot;4&quot;</span><span class="token punctuation">)</span>
+        pins<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">&apos;state&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+    
+    <span class="token comment">#This data wii be sent to index.html (pins dictionary)</span>
+    templateData <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">&apos;pins&apos;</span> <span class="token punctuation">:</span> pins <span class="token punctuation">}</span>
+
+    data <span class="token operator">=</span> showData<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+    <span class="token comment"># Pass the template data into the template index.html and return it</span>
+    <span class="token keyword keyword-return">return</span> render_template<span class="token punctuation">(</span><span class="token string">&apos;index.html&apos;</span><span class="token punctuation">,</span> <span class="token operator">**</span>templateData<span class="token punctuation">,</span> data<span class="token operator">=</span>data<span class="token punctuation">)</span>
+
+
+<span class="token keyword keyword-def">def</span> <span class="token function">delete</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    cursor <span class="token operator">=</span> dbConn<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    cursor<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token string">&quot;DELETE FROM doorLog where ID &gt; 0&quot;</span><span class="token punctuation">)</span>
+    dbConn<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    cursor<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    cursor <span class="token operator">=</span> dbConn<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    cursor<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token string">&quot;ALTER TABLE doorLog AUTO_INCREMENT = 1&quot;</span><span class="token punctuation">)</span>
+    dbConn<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    cursor<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword keyword-def">def</span> <span class="token function">readThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-while">while</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        data <span class="token operator">=</span> arduino<span class="token punctuation">.</span>readline<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">&apos;ASCII&apos;</span><span class="token punctuation">)</span>
+        <span class="token keyword keyword-if">if</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+            <span class="token keyword keyword-if">if</span> <span class="token string">&quot;,&quot;</span> <span class="token keyword keyword-in">in</span> data<span class="token punctuation">:</span>
+                splitData <span class="token operator">=</span> data<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">&quot;,&quot;</span><span class="token punctuation">)</span>
+                <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>splitData<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token keyword keyword-if">if</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>splitData<span class="token punctuation">)</span> <span class="token operator">&gt;=</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                    <span class="token keyword keyword-if">if</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>splitData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token keyword keyword-and">and</span> <span class="token builtin">len</span><span class="token punctuation">(</span>splitData<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                        cursor <span class="token operator">=</span> dbConn<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                        cursor<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token string">&quot;INSERT INTO doorLog (time, light, distance) values (\&apos;{0}\&apos;, \&apos;{1}\&apos;, \&apos;{2}\&apos;)&quot;</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> splitData<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> splitData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                        dbConn<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                        cursor<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                        <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">&quot;Insertion successful&quot;</span><span class="token punctuation">)</span>
+                        time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+<span class="token keyword keyword-def">def</span> <span class="token function">showData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    cur <span class="token operator">=</span> dbConn<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    cur<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token string">&quot;select * from doorLog&quot;</span><span class="token punctuation">)</span>
+    dbConn<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    cur<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword keyword-return">return</span> cur<span class="token punctuation">.</span>fetchall<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Main function, set up serial bus, indicate port for the webserver,</span>
+<span class="token comment"># ans start the service.</span>
+<span class="token keyword keyword-if">if</span> __name__ <span class="token operator">==</span> <span class="token string">&apos;__main__&apos;</span><span class="token punctuation">:</span>
+    arduino <span class="token operator">=</span> serial<span class="token punctuation">.</span>Serial<span class="token punctuation">(</span><span class="token string">&apos;/dev/ttyACM0&apos;</span><span class="token punctuation">,</span> <span class="token number">9600</span><span class="token punctuation">,</span> timeout <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    arduino<span class="token punctuation">.</span>flush<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    dbConn <span class="token operator">=</span> pymysql<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">&quot;localhost&quot;</span><span class="token punctuation">,</span>user<span class="token operator">=</span><span class="token string">&quot;pi&quot;</span><span class="token punctuation">,</span>password<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>database<span class="token operator">=</span><span class="token string">&quot;door_db&quot;</span><span class="token punctuation">)</span> <span class="token keyword keyword-or">or</span> die<span class="token punctuation">(</span><span class="token string">&quot;Cannot connect to database&quot;</span><span class="token punctuation">)</span>
+    x <span class="token operator">=</span> threading<span class="token punctuation">.</span>Thread<span class="token punctuation">(</span>target<span class="token operator">=</span>readThread<span class="token punctuation">)</span>
+    x<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">&apos;0.0.0.0&apos;</span><span class="token punctuation">,</span> port <span class="token operator">=</span> <span class="token number">80</span><span class="token punctuation">,</span> debug <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">)</span>
+</pre><h5 class="mume-header" id="html">HTML</h5>
+
+<pre data-role="codeBlock" data-info="html" class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Automated Chicken Door<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+		<span class="token selector">table<span class="token punctuation">,</span> th<span class="token punctuation">,</span> td</span> <span class="token punctuation">{</span>
+  			<span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token unit">px</span> solid <span class="token color">black</span><span class="token punctuation">;</span>
+			<span class="token property">border-collapse</span><span class="token punctuation">:</span> collapse<span class="token punctuation">;</span>
+			<span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token unit">px</span> <span class="token number">50</span><span class="token unit">px</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Automated Chicken Door<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>submit<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>Refresh Page<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/<span class="token punctuation">&quot;</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>POST<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">&gt;</span></span>Set Light Value (0-1023)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>number<span class="token punctuation">&quot;</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>light<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>submit<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>Update<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/<span class="token punctuation">&quot;</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>POST<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">&gt;</span></span>Set Distance Value (0-200)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>number<span class="token punctuation">&quot;</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>distance<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>submit<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>Update<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/<span class="token punctuation">&quot;</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>POST<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>submit<span class="token punctuation">&quot;</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>delete<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>Clear Table<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+	
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">&gt;</span></span>Triggered Door Events<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">&gt;</span></span>
+
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">&gt;</span></span>Time<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">&gt;</span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">&gt;</span></span>Light<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">&gt;</span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">&gt;</span></span>Distance<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+			
+			{% for row in data %}
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>{{row[1]}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>{{row[2]}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>{{row[3]}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+			{% endfor %}
+			
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">&gt;</span></span>
+			
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</pre>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
